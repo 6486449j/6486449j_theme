@@ -14,6 +14,15 @@ function themeConfig($form) {
     array('ShowRecentPosts', 'ShowRecentComments', 'ShowCategory', 'ShowArchive', 'ShowOther'), _t('侧边栏显示'));
     
     $form->addInput($sidebarBlock->multiMode());
+
+    $links = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'links',
+        NULL,
+        NULL,
+        _t('友情链接'),
+        _t('链接格式参考 <a href="https://mdr.docs.fsky7.com/function/links/">MDr</a>')
+    );
+    $form->addInput($links);
 }
 
 
@@ -85,4 +94,25 @@ function themeFields($layout)
         _t('默认没有协议，请前往 <a href="https://creativecommons.org/licenses/" target="_blank">CreativeCommons</a> 查看更多关于协议的内容，仅支持 4.0 ( 国际 ) 协议')
     );
     $layout->addItem($licenses);
+}
+
+function printLinks()
+{
+    $link = '';
+    $list = Helper::options()->links ? explode("\r\n", Helper::options()->links) : [];
+    foreach ($list as $val) {
+        list($name, $url, $description, $logo) = explode(',', $val);
+        $link .= <<<END
+        <a href="$url" target="_blank" title="$name">
+            <div style="display: block; overflow: hidden; white-space: nowrap; height: 100px; padding: 8px;">    
+                <img src="$logo" title="$name" style="display: inline-block; width: 100px; height: 100px;"/>
+                <div style="display: inline-block; height: 100px; width: calc(100% - 100px); vertical-align: middle; white-space: normal;">
+                    <div><b>$name</b></div>
+                    <div>$description</div>
+                </div>
+            </div>
+        </a>
+        END;
+    }
+    echo $link ? $link : '<b>暂无链接</b>';
 }
