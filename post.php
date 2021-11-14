@@ -10,11 +10,12 @@
                 <li itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="name" href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a></li>
                 <li><time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time></li>
                 <li><?php $this->category(','); ?></li>
+                <li><?php Postviews($this);?></li>
             </ul>
             <div class="post-content" itemprop="articleBody">
                 <?php $this->content(); ?>
             </div>
-            <p itemprop="keywords" class="tags"><?php _e('标签: '); ?><?php $this->tags(', ', true, 'none'); ?></p>
+            <p itemprop="keywords" class="tags"><?php _e('标签: '); ?><?php $this->tags(', ', true, '无'); ?></p>
         </div>
     </article>
 

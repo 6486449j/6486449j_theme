@@ -23,6 +23,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 					<li><time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time></li>
 					<li><?php $this->category(','); ?></li>
 					<li itemprop="interactionCount"><a itemprop="discussionUrl" href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('暂无评论', '1 条评论', '%d 条评论'); ?></a></li>
+					<li><?php Postviews($this); ?></li>
 				</ul>
 				<div class="post-content" itemprop="articleBody">
 					<?php $this->excerpt(100, '…'); ?>
