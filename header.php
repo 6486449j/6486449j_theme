@@ -45,12 +45,18 @@
     	    <!-- <p class="description"><?php $this->options->description() ?></p> -->
         <?php endif; ?>
         </div>
-        <div class="site-search">
-            <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
-                <label for="s" class="sr-only"><?php _e('搜索关键字'); ?></label>
-                <input type="text" id="s" name="s" class="text" placeholder="<?php _e('输入关键字搜索'); ?>" />
-                <button type="submit" class="submit"><?php _e('搜索'); ?></button>
-            </form>
+        <div class="header_right">
+            <div class="pages">
+               <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
+               <a<?php if($this->is('page', $pages->slug)): ?> class="current"<?php endif; ?> href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a>
+            </div>
+            <div class="site-search">
+                <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
+                    <label for="s" class="sr-only"><?php _e('搜索关键字'); ?></label>
+                    <input type="text" id="s" name="s" class="text" placeholder="<?php _e('输入关键字搜索'); ?>" />
+                    <button type="submit" class="submit"><?php _e('搜索'); ?></button>
+                </form>
+            </div>
         </div>
     </div><!-- end .row -->
 </header><!-- end #header -->

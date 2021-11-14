@@ -136,6 +136,11 @@ textarea {
     flex-direction: row;
     justify-content: space-between;
 }
+@media screen and (max-width: 700px) {
+    .topbar {
+        margin-left: 10px;
+    }
+}
 .site-name {
     font-family: serif;
     font-weight: bold;
@@ -177,8 +182,14 @@ textarea {
     background: #F6F6F6;
 }
 
-.site-search {
+/* .site-search {
     align-self: flex-end;
+} */
+.header_right {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #search {
@@ -186,6 +197,14 @@ textarea {
     width: 150px;
     /* margin-top: 15px; */
     /* align-self: flex-end; */
+}
+
+.pages {
+    font-size: 16px;
+    margin-right: 15px;
+}
+.pages a {
+    margin:0 5px;
 }
 
 #search input {
@@ -224,7 +243,7 @@ textarea {
 
 .post-main {
     margin-bottom: 20px;
-    padding: 10px 50px;
+    padding: 10px 20px;
 }
 .thumbnail {
     width: 100%;
@@ -378,10 +397,10 @@ a:active {
     text-decoration: none;
 }
 
-.page-navigator .current a {
+/* .page-navigator .current a {
     color: #444;
     background: #EEE;
-}
+} */
 
 #comments {
     padding-top: 15px;
@@ -393,12 +412,12 @@ a:active {
     padding: 0;
 }
 
-.comment-list {
-    /* max-width: 600px; */
-}
+/* .comment-list {
+     max-width: 600px; 
+}*/ 
 .comment-list li {
     margin: 20px 0;
-    padding: 20px 50px;
+    padding: 20px 20px;
     /* border: 1px solid rgb(150, 150, 150); */
     box-shadow: 0px 3px 6px #CCCCCC ;
     /* max-width: 500px; */

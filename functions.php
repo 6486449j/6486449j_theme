@@ -100,19 +100,20 @@ function printLinks()
 {
     $link = '';
     $list = Helper::options()->links ? explode("\r\n", Helper::options()->links) : [];
+
+    $link .= '<div style="display: flex; display: -webkit-flex; justify-content: space-around; flex-wrap: wrap; flex-shrink: 0;">';
     foreach ($list as $val) {
         list($name, $url, $description, $logo) = explode(',', $val);
         $link .= <<<END
-        <a href="$url" target="_blank" title="$name">
-            <div style="display: block; overflow: hidden; white-space: nowrap; height: 100px; padding: 8px;">    
-                <img src="$logo" title="$name" style="display: inline-block; width: 100px; height: 100px;"/>
-                <div style="display: inline-block; height: 100px; width: calc(100% - 100px); vertical-align: middle; white-space: normal;">
-                    <div><b>$name</b></div>
-                    <div>$description</div>
-                </div>
+        <div style="display: flex; display: -webkit-flex; flex-direction: column; flex-shrink: 0; margin: 10px; height: 290px; width: 200px; border: 1px solid #AAAAAA">
+            <div style="height: 200px; width: 100%; overflow: hidden;">
+                <img src="$logo" title="$name" style="display: inline-block; max-width: 100%; height: auto;"/>
             </div>
-        </a>
+            <a href="$url" target="_blank" title="$name" style="margin-top: 5px;">$name</a>
+            <div style="background-color: white; margin-top: 5px;">$description</div>
+        </div>
         END;
     }
+    $link .= '</div>';
     echo $link ? $link : '<b>暂无链接</b>';
 }
